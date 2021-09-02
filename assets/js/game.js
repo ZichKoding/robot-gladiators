@@ -73,7 +73,7 @@ var startGame = function() {
             var pickedEnemyObject = enemyInfo[i];
 
             // reset enemyHealth before starting new fight
-            pickedEnemyObject= randomNumber(40, 60);
+            pickedEnemyObject.health= randomNumber(40, 60);
 
             // use debugger to pause script from runnin and check what's going on at that moment in the code
             // debugger;
