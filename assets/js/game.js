@@ -1,6 +1,3 @@
-// Aler players that they are starting the round
-window.alert("Welcome to Robot Gladiators!")
-
 var fight = function(enemy) {
     while (playerInfo.health > 0 && enemy.health > 0){
         //ask player if they'd like to fight or run 
@@ -162,55 +159,71 @@ var randomNumber = function(min, max) {
     return value;
 };
 
-var playerInfo = {
-    name: window.prompt("What is your robot's name?"),
-    health: 100,
-    attack: 10,
-    money: 10,
-    reset: function() {
-        this.health = 100;
-        this.money = 10;
-        this.attack = 10;
-    },
-    refillHealth: function() {
-        if (this.money >= 7) {
-            window.alert("Refilling player's health by 20 for 7 dollars.");
-            this.health += 20;
-            this.money -= 7;
-        }
-        else {
-            window.alert("You don't have enough money!");
-        }
-    },
-    upgradeAttack: function() {
-        if (this.money >= 7) {
-            window.alert("Upgrading player's attack by 6 for 7 dolalrs.");
-            this.attack += 6;
-            this.money -= 7;
-        }
-        else {
-            window.alert("You don't have enough money!");
-        }
+var getPlayerName = function() {
+    var name = "";
+
+    while (name === "" || name === null) {
+        name = window.prompt("What is your robot's name?");
     }
-};
+    console.log("Your robot's name is " + name);
+}
 
-// You can also log multiple values at once like this
-console.log(playerInfo.name, playerInfo.health, playerInfo.attack);
+// Aler players that they are starting the round
+var welcome = window.confirm("Welcome to Robot Gladiators!");
+if (welcome) {
+        
+    var playerInfo = {
+        name: getPlayerName(),
+        health: 100,
+        attack: 10,
+        money: 10,
+        reset: function() {
+            this.health = 100;
+            this.money = 10;
+            this.attack = 10;
+        },
+        refillHealth: function() {
+            if (this.money >= 7) {
+                window.alert("Refilling player's health by 20 for 7 dollars.");
+                this.health += 20;
+                this.money -= 7;
+            }
+            else {
+                window.alert("You don't have enough money!");
+            }
+        },
+        upgradeAttack: function() {
+            if (this.money >= 7) {
+                window.alert("Upgrading player's attack by 6 for 7 dolalrs.");
+                this.attack += 6;
+                this.money -= 7;
+            }
+            else {
+                window.alert("You don't have enough money!");
+            }
+        }
+    };
 
-var enemyInfo = [
-    {
-        name: "Roborto",
-        attack: randomNumber(10, 14)
-    },
-    {
-        name: "Amy Android",
-        attack: randomNumber(10, 14)
-    },
-    {
-        name: "Robo Trumble",
-        attack: randomNumber(10, 14)
-    }
-];
+    // You can also log multiple values at once like this
+    console.log(playerInfo.name, playerInfo.health, playerInfo.attack);
 
+    var enemyInfo = [
+        {
+            name: "Roborto",
+            attack: randomNumber(10, 14)
+        },
+        {
+            name: "Amy Android",
+            attack: randomNumber(10, 14)
+        },
+        {
+            name: "Robo Trumble",
+            attack: randomNumber(10, 14)
+        }
+    ];
 
-startGame();
+    startGame();
+} 
+else {
+    window.alert("Please Come Again!");
+}
